@@ -1,116 +1,11 @@
 \documentclass{book}
 
-\usepackage[spanish]{babel}
-\usepackage[utf8]{inputenc}
-
-\usepackage{graphicx}
-\usepackage{lipsum}
-\usepackage{microtype}
-
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-
-\usepackage[pdftex]{hyperref}
-
-\hypersetup{pdfauthor={J. S. Castellanos-Durán},pdftitle={RECANEWS Volumen 3 - Marzo 2015},colorlinks,linkcolor=black,urlcolor=blue}
-
-\usepackage[paperwidth=210mm, paperheight=297mm, textwidth=160mm, textheight=240mm, bindingoffset=1cm]{geometry}
-
-
-% obliczenie szerokości lewego marginesu
-\usepackage{calc}
-\newlength{\lmargin}
-\setlength{\lmargin}{1in + \hoffset + \oddsidemargin}
-
-\usepackage{flowfram}
-
-\usepackage{color}
-
-\usepackage{tikz}
-\usepackage{anyfontsize}
-
-% definicja ramek typu flow umieszczonych na stonie 1
-\newflowframe[1]{8cm}{24\baselineskip}{-.50cm}{0\baselineskip}[frame1-1a]
-\newflowframe[1]{8cm}{23\baselineskip}{8.5cm}{0\baselineskip}[frame1-2b]
-%\newflowframe[1]{5cm}{27\baselineskip}{11cm}{0\baselineskip}[frame1-3c]
-
-%definicja ramek statycznych wstawianych na stronie 1
-\newstaticframe[1]{\paperwidth}{14cm}{-\lmargin}{12.5cm}[frameS-1a]
-\newstaticframe[1]{14cm}{7\baselineskip}{0cm}{45\baselineskip}[frameS-1b]
-
-%definicja ramki dymamicznej wstawiania na stonie nieparzystej
-\newdynamicframe[odd]{2cm}{2cm}{-\lmargin}{6cm}[frameD-1a]
-%definicja ramki dymamicznej wstawiania na stonie parzystej
-\newdynamicframe[even]{2cm}{2cm}{\textwidth+\lmargin-2cm}{6cm}[frameD-1b]
-
-% definicja ramek typu flow na kolejnych stronach
-\newflowframe[>1]{8cm}{57\baselineskip}{-.50cm}{0\baselineskip}[frame2-1a]
-\newflowframe[>1]{8cm}{57\baselineskip}{8.5cm}{0\baselineskip}[frame2-2a]
-%\newflowframe[>1]{5cm}{57\baselineskip}{11cm}{0\baselineskip}[frame2-3a]
-
-\definecolor{green}{rgb}{0.6,0.8,0.1}
-
-\title{RECANEWS Volumen 4 - Abril 2015}
-\author{J. Sebastián Castellanos Durán}
-\date{\relax}
-
+%****************
+\input{structure} 
 \begin{document}
-
-\pagestyle{empty}
-
-% wstawienie numerów stron w ramki dynamiczne frameD-1a i frameD-1b
-\begin{dynamiccontents*}{frameD-1a}
-\begin{tikzpicture}
-\draw(0,0) node [fill=black, minimum width=2cm, minimum height=2cm]{
-{\sffamily\bfseries\Huge\color{white}\thepage}
-};
-\end{tikzpicture}
-\end{dynamiccontents*}
-
-\begin{dynamiccontents*}{frameD-1b}
-\begin{tikzpicture}
-\draw(0,0) node [fill=black, minimum width=2cm, minimum height=2cm]{
-{\sffamily \bfseries\Huge\color{white}\thepage}
-};
-\end{tikzpicture}
-\end{dynamiccontents*}
-
-
-% wstawienie grafiki w ramkię statyczną frameS-1a
-\begin{staticcontents*}{frameS-1a}
-\includegraphics[width=1\textwidth]{fig11.jpg}
-\end{staticcontents*}
-
-% wypełnienie tekstem ramki statycznej frameS-1b
-\begin{staticcontents*}{frameS-1b}
-\begin{tikzpicture}
-\draw(0,0) node [fill=white, text width=13cm, inner sep=5mm, opacity=0.7]{
-\large\sffamily
-{\fontsize{70}{30}\selectfont {\color{black} RECANEWS}}\\
-
-
-{\fontsize{30}{30}\selectfont {\color{black} Volumen 4}}\\
-\begin{center}
-{\fontsize{30}{30}\selectfont {\color{black} Llamada a publicaciones}}\\
-\end{center}
-\begin{flushright}
-{\fontsize{30}{30}\selectfont {\color{black} Abril 2015}}
-\end{flushright}
-};
-\end{tikzpicture}
-\end{staticcontents*}
-
-
-%\tableofcontents{}
-% wlanie tekstu do wszystkich ramek typu flow
-
-
-
-\newpage
-
-
-\renewcommand\thesection{\arabic{section}}
-\renewcommand\thesubsection{\arabic{subsection}}
+\newcommand{\theimage}{fig11.jpg}
+\input{head} 
+%****************
 
 %*********************************************
 \addcontentsline{toc}{section}{Propósito}
@@ -148,107 +43,14 @@ Colaboraciones (e.g. necesidad de tiempo en clusters).
 
 %*********************************************
 \addcontentsline{toc}{section}{¿Cuál es la periodicidad de RECANEWS?}
-\section*{¿Cuál es la periodicidad de RECANEWS?}
+\section*{¿Cuál es la periodicidad de\\ RECANEWS?}
 %*********************************************
 
 Esta publicación se realizará mensualmente a principios de cada mes (siempre y cuando haya alguna publicación). También se hará una llamada para publicaciones a mediados de cada mes. 
 
-%*********************************************
-\addcontentsline{toc}{section}{¿Cómo publicar en RECANEWS?}
-\section*{¿Cómo publicar en RECANEWS?}
-%*********************************************
-Las dos posibles alternativas para publicar en\par RECANEWS son:\\
-\\
-\textbf{I.} Se puede realizar un pull request a en el repositorio github del volumen del mes:
-\begin{center}
- \url{https://github.com/recanews/2015_4}
-\end{center}
-
-\noindent \textbf{II.} Enviar un correo a \url{reca.news@gmail.com} con las siguientes especificaciones:
-\begin{description}
-\item[Correo:]\url{reca.news@gmail.com}
-\item[Asunto:]Título de la publicación
-\item[Contenido:]Contenido de la publicación\\
-Persona encargada (Opcional)\\
-Correo de la persona encargada (Opcional)
-\end{description}
-  
-
-%*********************************************
-\addcontentsline{toc}{section}{¿Quién recibe RECANEWS?}
-\section*{¿Cómo publicar en RECANEWS?}
-%*********************************************
-
-Cualquier persona interesada en hacer parte de la base de datos puede enviar un correo a 
-\begin{description}
-\item[Correo:]\url{reca.news@gmail.com}
-\item[Asunto:]Subcripción a RECANEWS
-\item[Contenido:]Correo (Obligatorio).\\
-Nombre o nickname (opcional)
-\end{description}
-
-%*********************************************
-\addcontentsline{toc}{section}{Repositorio de RECANEWS}
-\section*{Repositorio de RECANEWS}
-%*********************************************
-
-Repositorio: \url{https://github.com/recanews}\\
-
-
-
-%*********************************************
-\addcontentsline{toc}{section}{Contacto del RECA}
-\section*{Contacto del RECA:}
-%*********************************************
-
-\begin{description}
-\item[Correo RECA:]\url{reca.astronomia@gmail.com}
-\item[Facebook:] \url{https://www.facebook.com/RECAstronomia}
-\item[Google$+$:] \url{http://goo.gl/P0DEf4}
-\item[Twitter:] \url{https://twitter.com/RECAstronomia}
-\item[Pagina Web:] \url{http://goo.gl/Fl4zQP}
-\end{description}
-
-
-%*********************************************
-\addcontentsline{toc}{section}{Representantes de RECA en las regiones}
-\section*{Representantes de RECA en las regiones}
-%*********************************************
-\begin{description}
-\item[Medellín:]Malory Agudelo Vásquez\\
-\url{magudelov@gmail.com}\\ \url{magudelov@fisica.udea.edu.co}
-\item[Pereira:]Luisa Fernanda Cardona\\ \url{luisferncardona@utp.edu.co}
-\item[Pasto:]Katherine Mafla Oliva\\
-\url{skmofis13@gmail.com}
-\item[Cali:]Daniel Santacruz\\
-\url{santacruz121@gmail.com}
-\item[Bogotá:]Maria Camila Remolina Gutierrez\\
-\url{mc.remolina197@uniandes.edu.co}\\
-
-Andres Felipe Ramos Padilla\\
-\url{andresrp25@gmail.com}\\
-
-Juan David Jimenez Nieto\\
-\url{jdjimenezn@correo.udistrital.edu.co}
-\end{description}
-
-
-%*********************************************
-\addcontentsline{toc}{section}{Editor RECANEWS}
-			\section*{Editor RECANEWS}
-%********************************************
-  
-\begin{flushright}
-J. Sebastián Castellanos-Durán\\
-\url{jscastellanosd@unal.edu.co}\\
-Observatorio Astronómico Nacional\\
-Universidad Nacional de Colombia
-\end{flushright}
-\begin{flushright}
-Cualquier comentario por favor escribir al correo  \url{reca.news@gmail.com}\\
-Abril 2015
-\end{flushright}
-
+%********
+\input{notes}
+%********
 
 \end{document}
 
